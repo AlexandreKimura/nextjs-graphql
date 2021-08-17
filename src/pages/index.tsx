@@ -6,7 +6,7 @@ type Props = {
   title: string;
 };
 
-const blas = 'dsdsa';
+const bla = 'dsdsa';
 
 export default function Home({ title = 'React' }: Props) {
   return (
