@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import LinkWrapper from '.';
 
 export const Wrapper = styled.div`
   position: fixed;
@@ -13,5 +12,3 @@ export const Wrapper = styled.div`
     transition: color 0.3s ease-in-out;
   }
 `;
-
-export default LinkWrapper;
