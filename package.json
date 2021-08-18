@@ -16,11 +16,11 @@
     }
   },
   "lint-staged": {
-    "src/**/*": [
-    ]
+    "src/**/*": []
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.15.0",
+    "@styled-icons/evaicons-outline": "^10.34.0",
     "@types/jest": "^27.0.1",
     "jest": "^27.0.6",
     "leaflet": "^1.7.1",
