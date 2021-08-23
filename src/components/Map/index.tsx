@@ -1,5 +1,12 @@
+import L from 'leaflet';
 import { useRouter } from 'next/dist/client/router';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  MapConsumer
+} from 'react-leaflet';
 
 type Place = {
   id: string;
@@ -33,6 +40,13 @@ const CustomTileLayer = () => {
   );
 };
 
+const markerIcon = new L.Icon({
+  iconUrl: '',
+  iconSize: [40, 40],
+  iconAnchor: [20, 20],
+  popupAnchor: [0, -40]
+});
+
 const Map = ({ places }: MapProps) => {
   const router = useRouter();
 
@@ -41,7 +55,26 @@ const Map = ({ places }: MapProps) => {
       center={[0, 0]}
       zoom={3}
       style={{ height: '100%', width: '100%' }}
+      minZoom={3}
+      maxBounds={[
+        [-180, 180],
+        [180, 180]
+      ]}
     >
+      <MapConsumer>
+        {(map) => {
+          const width =
+            window.innerWidth ||
+            document.documentElement.clientWidth ||
+            document.body.clientWidth;
+
+          if (width < 768) {
+            map.setMinZoom(2);
+          }
+
+          return null;
+        }}
+      </MapConsumer>
       <CustomTileLayer />
 
       {places?.map(({ id, slug, name, location }) => {
@@ -57,6 +90,7 @@ const Map = ({ places }: MapProps) => {
                 router.push(`/place/${slug}`);
               }
             }}
+            //icon={markerIcon}
           />
         );
       })}
