@@ -58,7 +58,7 @@ const Map = ({ places }: MapProps) => {
       minZoom={3}
       maxBounds={[
         [-180, 180],
-        [-180, 180]
+        [180, -180]
       ]}
     >
       <MapConsumer>
